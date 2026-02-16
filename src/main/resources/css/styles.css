@@ -1,0 +1,801 @@
+/* --- BASE --- */
+.root {
+    -fx-font-family: 'Segoe UI', 'Helvetica', sans-serif;
+}
+
+/* --- TOP BAR --- */
+.top-bar {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);
+}
+
+.app-logo-text {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #90A4AE;
+    -fx-padding: 0 0 -2 0;
+}
+
+.page-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #263238;
+}
+
+/* --- CARDS & PANELS --- */
+.card-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);
+    -fx-padding: 20;
+}
+
+.receipt-card {
+    -fx-background-color: #FAFAFA; /* Slightly darker than white */
+    -fx-background-radius: 4;
+    -fx-border-color: #CFD8DC;
+    -fx-border-width: 1;
+    -fx-padding: 15;
+}
+
+.section-header {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #009688; /* Brand Teal */
+}
+
+.receipt-header {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #37474F;
+    -fx-text-transform: uppercase;
+}
+
+/* --- INPUTS --- */
+.input-field, .combo-box-modern {
+    -fx-background-color: #F4F6F8;
+    -fx-background-radius: 4;
+    -fx-border-color: #CFD8DC;
+    -fx-border-radius: 4;
+    -fx-padding: 5;
+}
+
+.input-field:focused, .combo-box-modern:focused {
+    -fx-border-color: #009688;
+    -fx-background-color: white;
+}
+
+.label-small {
+    -fx-font-size: 11px;
+    -fx-text-fill: #78909C;
+}
+
+/* --- TABLES (The Medical Look) --- */
+.modern-table, .modern-table-small {
+    -fx-background-color: transparent;
+    -fx-border-color: #ECEFF1;
+    -fx-table-cell-border-color: transparent;
+}
+
+.modern-table .column-header-background,
+.modern-table-small .column-header-background {
+    -fx-background-color: white;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #009688; /* Teal Line under headers */
+}
+
+.modern-table .column-header .label {
+    -fx-text-fill: #546E7A;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+}
+
+.modern-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #F4F6F8;
+}
+
+.modern-table .table-row-cell:hover {
+    -fx-background-color: #E0F2F1; /* Light Teal Hover */
+}
+
+/* Remove default blue selection and make it Teal */
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: #009688;
+}
+
+/* --- BUTTONS --- */
+.btn-primary {
+    -fx-background-color: #009688;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+.btn-primary:hover { -fx-background-color: #00796B; }
+
+.btn-success {
+    -fx-background-color: #2E7D32; /* Strong Green */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4;
+    -fx-padding: 10;
+    -fx-cursor: hand;
+}
+.btn-success:hover { -fx-background-color: #1B5E20; }
+
+.btn-warning {
+    -fx-background-color: #F57C00; /* Orange */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+
+.btn-secondary {
+    -fx-background-color: white;
+    -fx-border-color: #CFD8DC;
+    -fx-border-radius: 4;
+    -fx-text-fill: #546E7A;
+    -fx-cursor: hand;
+}
+.btn-secondary:hover { -fx-background-color: #F4F6F8; }
+
+/* --- TABS --- */
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: transparent;
+}
+.tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-text-fill: #78909C;
+    -fx-padding: 10 20;
+}
+.tab-pane .tab:selected {
+    -fx-border-width: 0 0 3 0;
+    -fx-border-color: #009688;
+}
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #009688;
+    -fx-font-weight: bold;
+}
+/* --- DASHBOARD SPECIFIC --- */
+
+.subtitle-text {
+    -fx-text-fill: #90A4AE;
+    -fx-font-size: 12px;
+}
+
+/* Toolbar */
+.toolbar-container {
+    -fx-background-color: white;
+    -fx-background-radius: 6;
+    -fx-border-color: #ECEFF1;
+    -fx-padding: 5;
+}
+
+.combo-box-flat, .date-picker-flat {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+.btn-icon-only {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.btn-icon-only:hover {
+    -fx-background-color: #ECEFF1;
+    -fx-background-radius: 50;
+}
+
+/* User Menu */
+.user-menu-btn {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-border-color: #ECEFF1;
+    -fx-padding: 5 15 5 5;
+}
+
+/* KPI Cards */
+.kpi-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 8, 0, 0, 4);
+    -fx-padding: 20;
+}
+
+.kpi-label {
+    -fx-text-fill: #78909C;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-transform: uppercase;
+}
+
+.kpi-value {
+    -fx-text-fill: #263238;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.kpi-value-alert {
+    -fx-text-fill: #D32F2F; /* Red for alerts */
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+/* Icon Backgrounds (Bubbles) */
+.icon-bg-teal {
+    -fx-background-color: #E0F2F1;
+    -fx-background-radius: 50;
+    -fx-min-width: 50; -fx-min-height: 50;
+}
+.icon-bg-red {
+    -fx-background-color: #FFEBEE;
+    -fx-background-radius: 50;
+    -fx-min-width: 50; -fx-min-height: 50;
+}
+.icon-bg-orange {
+    -fx-background-color: #FFF3E0;
+    -fx-background-radius: 50;
+    -fx-min-width: 50; -fx-min-height: 50;
+}
+
+/* Action Tiles */
+.btn-tile-primary {
+    -fx-background-color: #009688;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 15;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.btn-tile-secondary {
+    -fx-background-color: white;
+    -fx-text-fill: #546E7A;
+    -fx-border-color: #ECEFF1;
+    -fx-border-radius: 6;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 15;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+.btn-tile-secondary:hover {
+    -fx-background-color: #F4F6F8;
+    -fx-border-color: #B0BEC5;
+}
+
+.btn-tile-outline {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FF9800;
+    -fx-border-color: #FF9800;
+    -fx-border-style: dashed;
+    -fx-border-radius: 6;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 15;
+    -fx-cursor: hand;
+}
+
+.btn-link {
+    -fx-background-color: transparent;
+    -fx-text-fill: #009688;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+/* --- CHART BEAUTIFICATION --- */
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+.chart-series-line {
+    -fx-stroke: #009688;
+    -fx-stroke-width: 2px;
+}
+.chart-area-symbol {
+    -fx-background-color: #009688, white;
+    -fx-background-radius: 5px;
+    -fx-padding: 3px;
+}
+/* Fill the area under the chart with semi-transparent teal */
+.default-color0.chart-series-area-fill {
+    -fx-fill: rgba(0, 150, 136, 0.15);
+}
+.default-color0.chart-series-area-line {
+    -fx-stroke: #009688;
+}
+
+/* --- FORM SPECIFIC STYLES --- */
+
+.form-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #263238;
+}
+
+.form-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #90A4AE;
+}
+
+.section-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #009688; /* Teal */
+    -fx-padding: 5 0;
+    -fx-border-color: transparent transparent transparent transparent;
+    -fx-letter-spacing: 1px; /* Makes it look premium */
+}
+
+.field-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #546E7A;
+    -fx-font-weight: normal;
+}
+
+/* Make DatePicker look like TextFields */
+.date-picker-modern, .combo-box-modern {
+    -fx-background-color: #F4F6F8;
+    -fx-border-color: #CFD8DC;
+    -fx-border-radius: 4;
+}
+.date-picker-modern:focused, .combo-box-modern:focused {
+    -fx-background-color: white;
+    -fx-border-color: #009688;
+}
+
+/* Modern Checkbox */
+.checkbox-modern {
+    -fx-text-fill: #37474F;
+    -fx-padding: 10;
+    -fx-font-size: 13px;
+}
+.checkbox-modern .box {
+    -fx-background-color: white;
+    -fx-border-color: #CFD8DC;
+    -fx-border-radius: 3;
+}
+.checkbox-modern:selected .mark {
+    -fx-background-color: white;
+}
+.checkbox-modern:selected .box {
+    -fx-background-color: #D32F2F; /* Red for alert/warning implication */
+    -fx-border-color: #D32F2F;
+}
+
+/* --- INPUT GROUPS (Icon + TextField in one box) --- */
+.input-group {
+    -fx-background-color: #F4F6F8;
+    -fx-border-color: #CFD8DC;
+    -fx-border-radius: 4;
+    -fx-padding: 2 5;
+}.input-group-focused {
+     -fx-border-color: #009688;
+     -fx-background-color: white;
+     -fx-effect: dropshadow(three-pass-box, rgba(0,150,136,0.1), 5, 0, 0, 0);
+ }
+
+/* --- TEXT AREA --- */
+.text-area-modern {
+    -fx-background-color: transparent;
+}
+.text-area-modern .content {
+    -fx-background-color: #F4F6F8;
+    -fx-border-color: #CFD8DC;
+    -fx-border-radius: 4;
+}
+.text-area-modern:focused .content {
+    -fx-background-color: white;
+    -fx-border-color: #009688;
+}
+
+/* --- SEARCH BAR --- */
+.search-bar {
+    -fx-background-color: white;
+    -fx-border-color: #ECEFF1;
+    -fx-border-radius: 20; /* Rounded pill shape */
+    -fx-padding: 3 10;
+}
+.search-bar-focused {
+    -fx-border-color: #009688;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,150,136,0.1), 5, 0, 0, 2);
+}
+
+/* --- DANGER BUTTON (Outline) --- */
+.btn-danger-outline {
+    -fx-background-color: transparent;
+    -fx-border-color: #FFCDD2; /* Light Red */
+    -fx-border-radius: 4;
+    -fx-text-fill: #E53935;
+    -fx-cursor: hand;
+}
+.btn-danger-outline:hover {
+    -fx-background-color: #FFEBEE;
+    -fx-border-color: #E53935;
+}
+
+/* --- TABLE CELL STATUS PILLS --- */
+/* In your Java Code (Controller), you can set the style of the cell based on value */
+
+.modern-table-small {
+    -fx-background-color: #FAFAFA;
+}
+
+/* Make the Detail Table look more like a receipt */
+.modern-table-small .column-header-background {
+    -fx-background-color: #EEEEEE;
+}
+
+/* --- ACTION BUTTONS FOR THE BOTTOM --- */
+.btn-print {
+    -fx-background-color: #546E7A;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4;
+}
+.btn-print:hover {
+    -fx-background-color: #455A64;
+}
+
+.pill-red {
+    -fx-background-color: #FFEBEE;
+    -fx-text-fill: #D32F2F;
+    -fx-padding: 2 8;
+    -fx-background-radius: 10;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.pill-green {
+    -fx-background-color: #E8F5E9;
+    -fx-text-fill: #2E7D32;
+    -fx-padding: 2 8;
+    -fx-background-radius: 10;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+/* --- LOGIN SPECIFIC --- */
+
+.login-root {
+    /* Sophisticated medical gradient */
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #2A5058, #1a2a2f);
+}
+
+.login-card {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 30, 0, 0, 15);
+}
+
+.login-logo-text {
+    -fx-font-size: 26px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #263238;
+    -fx-letter-spacing: 2px;
+}
+
+.login-subtitle {
+    -fx-font-size: 11px;
+    -fx-text-fill: #78909C;
+    -fx-text-transform: uppercase;
+}
+
+.field-label-bright {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #546E7A;
+    -fx-letter-spacing: 1px;
+}
+
+.login-input {
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: #B0BEC5;
+    -fx-text-fill: #263238;
+    -fx-font-size: 14px;
+}
+
+/* Rounded, high-visibility login button */
+.btn-login {
+    -fx-background-color: #009688;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 25;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,150,136,0.3), 10, 0, 0, 5);
+}
+
+.btn-login:hover {
+    -fx-background-color: #00796B;
+    -fx-translate-y: -1px; /* Subtle lift effect */
+}
+
+.btn-login:pressed {
+    -fx-translate-y: 1px;
+}
+
+.error-text {
+    -fx-text-fill: #D32F2F;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.footer-text {
+    -fx-text-fill: #CFD8DC;
+    -fx-font-size: 9px;
+}
+
+/* Override input-group for login specifically if needed */
+.login-card .input-group {
+    -fx-background-color: #F8F9FB;
+    -fx-border-color: #ECEFF1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 5;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    -fx-background-color: #FFFFFF;
+    -fx-pref-width: 250;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 0);
+    -fx-border-color: transparent #ECEFF1 transparent transparent;
+}
+
+.sidebar-brand {
+    -fx-font-size: 16px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #263238;
+    -fx-letter-spacing: 2px;
+}
+
+.sidebar-section-title {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #B0BEC5;
+    -fx-padding: 15 0 5 15;
+}
+
+/* --- NAVIGATION BUTTONS --- */
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #546E7A;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 15;
+    -fx-font-size: 13px;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+.nav-btn:hover {
+    -fx-background-color: #F4F6F8;
+    -fx-text-fill: #009688;
+}
+
+.nav-btn-active {
+    -fx-background-color: #009688;
+    -fx-text-fill: white;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 15;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,150,136,0.2), 5, 0, 0, 2);
+}
+
+.nav-btn-logout {
+    -fx-background-color: transparent;
+    -fx-text-fill: #D32F2F;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 15;
+    -fx-cursor: hand;
+}
+
+/* --- FLOATING ACTION BAR --- */
+.action-bar-floating {
+    -fx-background-color: white;
+    -fx-padding: 15;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+.user-profile-mini {
+    -fx-background-color: white;
+    -fx-padding: 5 15;
+    -fx-background-radius: 20;
+    -fx-border-color: #ECEFF1;
+}
+/* --- KPI MINI CARDS --- */
+.kpi-card-small {
+    -fx-background-color: white;
+    -fx-padding: 15;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 10, 0, 0, 2);
+    -fx-border-color: #ECEFF1;
+    -fx-border-width: 1;
+}
+
+.kpi-label-small {
+    -fx-text-fill: #90A4AE;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1px;
+}
+
+.kpi-value-small {
+    -fx-text-fill: #37474F;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* --- BAR CHART STYLING --- */
+.chart-bar {
+    -fx-bar-fill: #009688; /* Brand Teal */
+    -fx-background-radius: 5 5 0 0; /* Rounded top for bars */
+}
+
+.chart-bar:hover {
+    -fx-bar-fill: #4DB6AC; /* Lighter teal on hover */
+}
+
+/* Remove default chart background noise */
+.chart-content {
+    -fx-padding: 10px;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: #ECEFF1;
+}
+
+/* --- UTILITIES --- */
+.card-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);
+}
+
+.icon-bg-teal {
+    -fx-background-color: #E0F2F1; /* Very light teal */
+    -fx-background-radius: 50;
+    -fx-padding: 10;
+}
+
+.input-group {
+    -fx-background-color: #F4F6F8;
+    -fx-border-color: #ECEFF1;
+    -fx-border-radius: 4;
+    -fx-padding: 2;
+}
+/* The Glow Effect handled by Controller */
+.input-group-focused {
+    -fx-border-color: #009688;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,150,136,0.1), 5, 0, 0, 2);
+}
+
+.login-input {
+    -fx-background-color: transparent;
+    -fx-text-fill: #37474F;
+}
+
+.label-small {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #90A4AE;
+    -fx-letter-spacing: 0.5px;
+}
+
+.combo-box-modern {
+    -fx-background-color: #F4F6F8;
+    -fx-border-color: #ECEFF1;
+}
+
+/* --- POS / RECEIPT STYLING --- */
+
+.receipt-paper {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 15, 0, 0, 5);
+    /* Make it look like a long paper slip */
+    -fx-background-radius: 0 0 5 5;
+}
+
+.receipt-header-section {
+    -fx-padding: 20;
+    -fx-alignment: CENTER;
+    -fx-background-color: #FAFAFA;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #EEEEEE;
+}
+
+.receipt-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #263238;
+    -fx-letter-spacing: 2px;
+}
+
+.receipt-subtitle {
+    -fx-font-size: 10px;
+    -fx-text-fill: #90A4AE;
+    -fx-text-transform: uppercase;
+}
+
+.receipt-footer-section {
+    -fx-padding: 20;
+    -fx-background-color: #E0F2F1; /* Very light teal background for money area */
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: #B2DFDB;
+}
+
+.pos-total-display {
+    -fx-font-size: 32px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #009688; /* Brand Teal */
+}
+
+/* Big Green Checkout Button */
+.btn-success-large {
+    -fx-background-color: #009688;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 15;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,150,136,0.3), 10, 0, 0, 5);
+}
+.btn-success-large:hover {
+    -fx-background-color: #00796B;
+    -fx-translate-y: -1px;
+}
+.btn-success-large:pressed {
+    -fx-translate-y: 1px;
+}
+
+/* Stock Critique - Red background */
+.row-critique {
+    -fx-background-color: #ffcdd2 !important; /* Light Red */
+}
+.row-critique .table-cell {
+    -fx-text-fill: #b71c1c; /* Dark Red text */
+    -fx-font-weight: bold;
+}
+
+/* Proche du seuil - Yellow background */
+.row-warning {
+    -fx-background-color: #fff9c4 !important; /* Light Yellow */
+}
+.row-warning .table-cell {
+    -fx-text-fill: #fbc02d; /* Darker Yellow/Gold text */
+}
+
+/* Hover effect fix (so colors don't disappear when selecting) */
+.row-critique:selected, .row-warning:selected {
+    -fx-background-color: #90caf9 !important; /* Standard Blue highlight */
+}
+
+/* Critical Stock: Red */
+.row-stock-critique {
+    -fx-background-color: #ffdde0 !important; /* Soft Red */
+}
+.row-stock-critique .table-cell {
+    -fx-text-fill: #c62828; /* Sharp Red text */
+    -fx-font-weight: bold;
+}
+
+/* Warning Stock: Yellow */
+.row-stock-warning {
+    -fx-background-color: #fff9c4 !important; /* Soft Yellow */
+}
+.row-stock-warning .table-cell {
+    -fx-text-fill: #856404; /* Brownish-Yellow text */
+}
+
+/* Expiry Warning: Orange/Purple (Optional) */
+.row-alert-expiry {
+    -fx-background-color: #f3e5f5 !important;
+}

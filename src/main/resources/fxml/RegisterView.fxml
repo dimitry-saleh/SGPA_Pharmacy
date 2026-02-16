@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.pharmacy.sgpa.controller.RegisterController"
+      stylesheets="@../css/styles.css"
+      alignment="CENTER" spacing="20" style="-fx-background-color: #F4F6F8;">
+
+    <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+
+    <VBox spacing="25" alignment="CENTER" maxWidth="420" styleClass="card-pane">
+        <padding><Insets top="30" right="30" bottom="30" left="30"/></padding>
+
+        <VBox alignment="CENTER" spacing="5">
+            <StackPane styleClass="icon-bg-teal" maxWidth="50" maxHeight="50">
+                <SVGPath content="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                         fill="#009688" scaleX="1.2" scaleY="1.2"/>
+            </StackPane>
+            <Label text="Nouvel Utilisateur" styleClass="section-header" style="-fx-font-size: 18px;"/>
+            <Label text="Créer un accès pour un collaborateur" styleClass="subtitle-text"/>
+        </VBox>
+
+        <Separator/>
+
+        <VBox spacing="15">
+
+            <VBox spacing="5">
+                <Label text="IDENTIFIANT" styleClass="label-small"/>
+                <HBox fx:id="userGroup" styleClass="input-group">
+                    <StackPane prefWidth="30">
+                        <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="#90A4AE" scaleX="0.7" scaleY="0.7"/>
+                    </StackPane>
+                    <TextField fx:id="txtUser" promptText="Ex: j.dupont" styleClass="login-input" HBox.hgrow="ALWAYS"/>
+                </HBox>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="RÔLE SYSTÈME" styleClass="label-small"/>
+                <ComboBox fx:id="comboRole" promptText="Sélectionner un rôle..." maxWidth="Infinity" styleClass="combo-box-modern"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="MOT DE PASSE PROVISOIRE" styleClass="label-small"/>
+                <HBox fx:id="passGroup" styleClass="input-group">
+                    <StackPane prefWidth="30">
+                        <SVGPath content="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" fill="#90A4AE" scaleX="0.7" scaleY="0.7"/>
+                    </StackPane>
+                    <PasswordField fx:id="txtPass" promptText="••••••••" styleClass="login-input" HBox.hgrow="ALWAYS"/>
+                </HBox>
+            </VBox>
+        </VBox>
+
+        <VBox spacing="10">
+            <Button text="CRÉER LE COMPTE" onAction="#handleRegister" maxWidth="Infinity" styleClass="btn-primary" prefHeight="40"/>
+            <Button text="Annuler" onAction="#handleCancel" maxWidth="Infinity" styleClass="btn-link" style="-fx-text-fill: #78909C;"/>
+        </VBox>
+
+    </VBox>
+</VBox>

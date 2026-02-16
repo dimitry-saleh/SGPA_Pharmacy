@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.pharmacy.sgpa.controller.RapportController"
+            stylesheets="@../css/styles.css"
+            style="-fx-background-color: #F4F6F8;"
+            prefHeight="700.0" prefWidth="1000.0">
+
+    <top>
+        <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="20">
+            <padding><Insets top="15" right="20" bottom="15" left="20"/></padding>
+            <VBox>
+                <Label text="SGPA PHARMA" styleClass="app-logo-text"/>
+                <Label text="Rapports &amp; Statistiques" styleClass="page-title"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="RETOUR MENU" onAction="#backToMenu" styleClass="btn-secondary">
+                <graphic>
+                    <SVGPath content="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="#546E7A" scaleX="0.7" scaleY="0.7"/>
+                </graphic>
+            </Button>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="25" style="-fx-padding: 25;">
+
+            <HBox spacing="20">
+                <VBox styleClass="kpi-card-small" HBox.hgrow="ALWAYS">
+                    <Label text="TOTAL ANNUEL" styleClass="kpi-label-small"/>
+                    <Label fx:id="lblTotalYear" text="124,500.00 €" styleClass="kpi-value-small"/>
+                </VBox>
+                <VBox styleClass="kpi-card-small" HBox.hgrow="ALWAYS">
+                    <Label text="MOYENNE MENSUELLE" styleClass="kpi-label-small"/>
+                    <Label fx:id="lblAvgMonth" text="10,375.00 €" styleClass="kpi-value-small"/>
+                </VBox>
+                <VBox styleClass="kpi-card-small" HBox.hgrow="ALWAYS">
+                    <Label text="MEILLEUR MOIS" styleClass="kpi-label-small"/>
+                    <Label fx:id="lblBestMonth" text="Décembre" styleClass="kpi-value-small" style="-fx-text-fill: #009688;"/>
+                </VBox>
+            </HBox>
+
+            <VBox spacing="15" VBox.vgrow="ALWAYS" styleClass="card-pane">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Évolution du Chiffre d'Affaires" styleClass="section-header"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <ComboBox fx:id="comboYear" promptText="2026" styleClass="combo-box-modern" prefWidth="120"/>
+                </HBox>
+
+                <BarChart fx:id="chartSales" legendVisible="false" verticalGridLinesVisible="false" VBox.vgrow="ALWAYS">
+                    <xAxis><CategoryAxis side="BOTTOM" tickLabelFill="#78909C"/></xAxis>
+                    <yAxis><NumberAxis side="LEFT" tickLabelFill="#78909C"/></yAxis>
+                </BarChart>
+            </VBox>
+
+            <HBox spacing="15" alignment="CENTER_LEFT" styleClass="action-bar-floating">
+                <Label text="Générer Document :" styleClass="field-label-bright" style="-fx-font-size: 12px;"/>
+                <Button text="EXPORTER VERS EXCEL (.XLSX)" onAction="#exportExcel" styleClass="btn-success">
+                    <graphic>
+                        <SVGPath content="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="WHITE" scaleX="0.8" scaleY="0.8"/>
+                    </graphic>
+                </Button>
+                <Button text="TÉLÉCHARGER PDF" onAction="#exportPDF" styleClass="btn-secondary"/>
+            </HBox>
+
+        </VBox>
+    </center>
+</BorderPane>

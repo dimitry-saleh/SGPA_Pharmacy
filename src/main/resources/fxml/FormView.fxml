@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.pharmacy.sgpa.controller.FormController"
+      stylesheets="@../css/styles.css"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: #F4F6F8;" prefWidth="500">
+
+    <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-padding: 0 0 20 0; -fx-border-color: transparent transparent #CFD8DC transparent;">
+        <StackPane styleClass="icon-bg-teal" maxWidth="40" maxHeight="40">
+            <SVGPath content="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="#009688"/>
+        </StackPane>
+        <Label fx:id="lblTitle" text="Nouveau Médicament" styleClass="section-header"/>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" vbarPolicy="AS_NEEDED">
+        <VBox spacing="15">
+
+            <VBox styleClass="card-pane" spacing="15">
+                <Label text="Informations Générales" styleClass="subtitle-text"/>
+                <GridPane hgap="15" vgap="15">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="50"/>
+                    </columnConstraints>
+
+                    <VBox GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label text="Nom Commercial *" styleClass="label-small"/>
+                        <TextField fx:id="txtNom" promptText="Ex: Doliprane"/>
+                    </VBox>
+                    <VBox GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Label text="Principe Actif" styleClass="label-small"/>
+                        <TextField fx:id="txtPrincipe" promptText="Ex: Paracétamol"/>
+                    </VBox>
+
+                    <VBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Label text="Forme" styleClass="label-small"/>
+                        <TextField fx:id="txtForme" promptText="Ex: Comprimé"/>
+                    </VBox>
+                    <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label text="Dosage" styleClass="label-small"/>
+                        <TextField fx:id="txtDosage" promptText="Ex: 1000mg"/>
+                    </VBox>
+                </GridPane>
+            </VBox>
+
+            <VBox styleClass="card-pane" spacing="15">
+                <Label text="Stock &amp; Prix" styleClass="subtitle-text"/>
+                <GridPane hgap="15" vgap="15">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="50"/>
+                    </columnConstraints>
+
+                    <VBox GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label text="Prix Achat (€)" styleClass="label-small"/>
+                        <TextField fx:id="txtPrixAchat" promptText="0.00"/>
+                    </VBox>
+                    <VBox GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Label text="Prix Public (€) *" styleClass="label-small"/>
+                        <TextField fx:id="txtPrixPublic" promptText="0.00"/>
+                    </VBox>
+
+                    <VBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Label text="Stock Initial" styleClass="label-small"/>
+                        <TextField fx:id="txtStock" promptText="0"/>
+                    </VBox>
+                    <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label text="Seuil Alerte" styleClass="label-small"/>
+                        <TextField fx:id="txtSeuil" promptText="5"/>
+                    </VBox>
+                </GridPane>
+            </VBox>
+
+            <VBox styleClass="card-pane" spacing="15">
+                <Label text="Détails Logistiques" styleClass="subtitle-text"/>
+
+                <VBox spacing="5">
+                    <Label text="Fournisseur *" styleClass="label-small"/>
+                    <ComboBox fx:id="comboFournisseur" promptText="Sélectionner un fournisseur" maxWidth="Infinity"/>
+                </VBox>
+
+                <HBox spacing="15">
+                    <VBox HBox.hgrow="ALWAYS">
+                        <Label text="Date de Péremption" styleClass="label-small"/>
+                        <DatePicker fx:id="datePeremption" maxWidth="Infinity"/>
+                    </VBox>
+                </HBox>
+
+                <CheckBox fx:id="chkOrdonnance" text="Nécessite une ordonnance" styleClass="checkbox-modern"/>
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
+        <Button text="Annuler" onAction="#closeWindow" styleClass="btn-link" style="-fx-text-fill: #78909C;"/>
+        <Button text="ENREGISTRER" onAction="#saveMedicament" styleClass="btn-primary" prefWidth="150"/>
+    </HBox>
+
+</VBox>
