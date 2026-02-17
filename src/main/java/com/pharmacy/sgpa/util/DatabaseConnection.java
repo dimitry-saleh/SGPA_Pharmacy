@@ -9,7 +9,7 @@ public class DatabaseConnection {
 
     // MAMP usually uses Port 8889
     // MAMP usually requires "root" as the password
-    private static final String URL = "jdbc:mysql://localhost:8889/sgpa_pharmacy";
+    private static final String URL = "jdbc:mysql://localhost:8889/sgpa_pharmacy?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
 
