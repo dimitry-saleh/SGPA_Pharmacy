@@ -73,32 +73,45 @@ public class MainController {
             });
         });
 
-        // 4. REWRITTEN ROW ALERT STYLING (Critical Red & Warning Yellow)
+        // 4. ADVANCED ROW COLORING (Hierarchy: Expiry > Stock > Prescription)
         medicamentTable.setRowFactory(tv -> new TableRow<Medicament>() {
             @Override
             protected void updateItem(Medicament item, boolean empty) {
                 super.updateItem(item, empty);
 
-                // Clear all previous custom styles to prevent "ghost" colors on empty rows
-                getStyleClass().removeAll("row-stock-critique", "row-stock-warning", "row-alert-expiry");
+                // Reset style to default for empty rows
+                setStyle("");
 
                 if (item != null && !empty) {
+                    LocalDate now = LocalDate.now();
+                    LocalDate expiryDate = item.getDatePeremption();
                     int currentStock = item.getStockActuel();
-                    int threshold = item.getSeuilMin();
+                    int minStock = item.getSeuilMin();
 
-                    // Logic: Red if at or below threshold, Yellow if within 20% of reaching it
-                    if (currentStock <= threshold) {
-                        getStyleClass().add("row-stock-critique"); // RED
-                    } else if (currentStock <= threshold * 1.25) {
-                        getStyleClass().add("row-stock-warning");  // YELLOW
+                    // PRIORITY 1: EXPIRATION (Most Critical)
+                    if (expiryDate != null && expiryDate.isBefore(now)) {
+                        // EXPIRED -> PURPLE
+                        setStyle("-fx-background-color: #E1BEE7; -fx-text-background-color: black;");
+                    }
+                    else if (expiryDate != null && expiryDate.isBefore(now.plusMonths(3))) {
+                        // NEAR EXPIRY (3 Months) -> LIGHT PURPLE
+                        setStyle("-fx-background-color: #F3E5F5; -fx-text-background-color: black;");
                     }
 
-                    // Keep expiry styling as a secondary check if not already colored by stock
-                    boolean perimeBientot = item.getDatePeremption() != null &&
-                            item.getDatePeremption().isBefore(LocalDate.now().plusMonths(3));
+                    // PRIORITY 2: STOCK LEVELS
+                    else if (currentStock <= minStock) {
+                        // CRITICAL STOCK -> RED
+                        setStyle("-fx-background-color: #EF5350; -fx-text-background-color: black;");
+                    }
+                    else if (currentStock <= (minStock * 1.25)) {
+                        // NEAR OUT OF STOCK (+25% buffer) -> YELLOW
+                        setStyle("-fx-background-color: #FFF9C4; -fx-text-background-color: black;");
+                    }
 
-                    if (perimeBientot && !getStyleClass().contains("row-stock-critique")) {
-                        getStyleClass().add("row-alert-expiry");
+                    // PRIORITY 3: INFORMATION
+                    else if (item.isNecessiteOrdonnance()) {
+                        // NEEDS PRESCRIPTION -> BLUE
+                        setStyle("-fx-background-color: #BBDEFB; -fx-text-background-color: black;");
                     }
                 }
             }

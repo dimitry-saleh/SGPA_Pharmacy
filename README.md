@@ -33,9 +33,9 @@ Inside this folder, you will find:
 2.  Create a new database named `sgpa_pharmacy`.
 3.  **Import the correct SQL script** from the `Others/` folder:
     * Use **`script8.sql`** if you are running MySQL 8.0+.
-    * Use **`script.sql`** if you are running MySQL 5.7.
+    * Use **`script57.sql`** if you are running MySQL 5.7.
 4.  **Important:** Check the `DatabaseConnection.java` file in the source code to ensure the username and password match your local MySQL configuration.
-4.2 **NB:** You can chech the `TestDB.java` file to figure out the problems when trying to connect to the DB. 
+5.  **NB:** You can check the `TestDB.java` file to figure out the problems when trying to connect to the DB. 
 
 ### 3. Launching the Application
 To start the application, navigate to the source package and run the **Launcher** class.
