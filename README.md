@@ -24,11 +24,11 @@ Inside this folder, you will find:
 ### 1. Prerequisites
 * **Java JDK 17** (or higher)
 * **Maven**
-* **MySQL Server** (Running on port 3306)
+* **MySQL Server** (I used MAMP)
 
 ### 2. Database Setup
 1.  Open your MySQL client (phpMyAdmin, Workbench, or Terminal).
-2.  Create a new database named `sgpa_db` (or as specified in the script).
+2.  Create a new database named `sgpa_pharmacy` 
 3.  Import the SQL script located at:
     > **`Others/database_script.sql`**
 4.  **Important:** Check the `DatabaseConnection.java` file in the source code to ensure the username and password match your local MySQL configuration.
