@@ -42,7 +42,7 @@ public class Medicament {
         this.fournisseurId = fournisseurId;
     }
 
-                   // A helper method to check if stock is low
+    // A helper method to check if stock is low
     public boolean isStockLow() {
         return stockActuel <= seuilMin;
     }

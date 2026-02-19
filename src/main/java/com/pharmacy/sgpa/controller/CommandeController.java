@@ -211,8 +211,6 @@ public class CommandeController {
             if (!orderList.isEmpty()) {
                 int id = orderList.get(0).getMedicament().getFournisseurId();
                 // We need the object to save the command.
-                // In a real app, you might fetch it from DAO,
-                // but here we can iterate the combo items to find the matching object.
                 for (Fournisseur item : comboFournisseur.getItems()) {
                     if (item.getId() == id) {
                         f = item;

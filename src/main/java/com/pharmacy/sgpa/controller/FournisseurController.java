@@ -15,7 +15,7 @@ import javafx.stage.Window;
 public class FournisseurController {
 
     // --- FXML UI COMPONENTS ---
-    @FXML private TextField txtSearch; // <--- MAKE SURE THIS IS IN YOUR FXML
+    @FXML private TextField txtSearch; //
 
     @FXML private TextField txtNom;
     @FXML private TextField txtContact;

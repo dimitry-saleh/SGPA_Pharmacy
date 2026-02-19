@@ -148,7 +148,6 @@ public class CommandeDAO {
 
     // Inside CommandeDAO.java
 
-    // Dans CommandeDAO.java
 
     public List<LignePanier> getLignesByCommandeId(int commandeId) {
         List<LignePanier> lignes = new ArrayList<>();

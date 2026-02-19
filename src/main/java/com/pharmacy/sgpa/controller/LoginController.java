@@ -129,8 +129,7 @@ public class LoginController {
                 stage.setScene(new Scene(root));
             }
 
-            // 3. Optional: Only center if the window wasn't already visible/resized
-            // stage.centerOnScreen();
+
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -220,7 +220,7 @@ public class RapportController {
     public void exportExcel(ActionEvent event) {
         javafx.stage.Window owner = lblAvgMonth.getScene().getWindow();
         Stage stage = (Stage) chartSales.getScene().getWindow();
-        // Uses your existing service, but typically you might want to filter this by year too in the future
+        // Uses the existing service, but typically we might want to filter this by year too in the future
         exportService.exportVentesToExcel(stage, javafx.collections.FXCollections.observableArrayList(venteDAO.getAllVentes()));
 
 

@@ -86,7 +86,6 @@ public class DashboardController {
         }
 
         // Show/Hide Admin Buttons based on Role
-        // Note: Assurez-vous que le rôle en base est bien "ADMIN" ou "Admin"
         boolean isAdmin = "ADMIN".equalsIgnoreCase(role);
 
         // 1. Bouton Gestion Utilisateurs
@@ -126,8 +125,6 @@ public class DashboardController {
         javafx.beans.value.ChangeListener<LocalDate> dateListener = (obs, oldVal, newVal) -> {
             if (!isSystemUpdate) {
                 comboPeriod.getSelectionModel().select("Personnalisé");
-                // Optional: Auto-refresh when picking a date?
-                // refreshDashboard();
             }
         };
 
@@ -172,7 +169,6 @@ public class DashboardController {
         if (start == null || end == null) return;
 
         // 1. Fetch KPIs
-        // (Replace these calls with your actual DAO methods)
         double totalSales = statsDAO.getTotalRevenue(start, end);
         int alerts = statsDAO.getCountLowStock();
         int orders = cmdDAO.getPendingOrdersCount();
@@ -210,8 +206,6 @@ public class DashboardController {
 
     // --- NAVIGATION ACTIONS ---
 
-    // ... existing code ...
-
     /**
      * Clicking "Stock in Danger" sends user to the Order Creation page
      */
@@ -229,7 +223,7 @@ public class DashboardController {
         NavigationUtil.navigateTo(event, "/fxml/CommandeView.fxml");
     }
 
-    // ... existing code ...
+
 
 
     @FXML

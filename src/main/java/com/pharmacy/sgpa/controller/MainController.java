@@ -44,7 +44,7 @@ public class MainController {
 
     private MedicamentDAO medicamentDAO;
     private ObservableList<Medicament> masterData = FXCollections.observableArrayList();
-    // filteredData is a "view" of masterData that changes as you type
+    // filteredData is a "view" of masterData that changes as we type
     private FilteredList<Medicament> filteredData;
 
 
@@ -125,7 +125,7 @@ public class MainController {
     }
     private void filterTable(String searchText) {
         if (searchText == null || searchText.isEmpty()) {
-            medicamentTable.setItems(masterData); // 'masterData' should be your full list from the DAO
+            medicamentTable.setItems(masterData); // 'masterData' should be your the list from the DAO
             return;
         }
 

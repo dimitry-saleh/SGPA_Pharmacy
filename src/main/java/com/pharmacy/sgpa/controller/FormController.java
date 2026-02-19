@@ -124,7 +124,7 @@ public class FormController {
         // 2. CRITICAL VALIDATION: PREVENT SQL FOREIGN KEY ERROR
         if (comboFournisseur.getValue() == null) {
             showNotification(owner,"Erreur Fournisseur", "Veuillez sélectionner un fournisseur dans la liste.");
-            return; // STOP HERE! Do not try to save.
+            return;
         }
 
         try {

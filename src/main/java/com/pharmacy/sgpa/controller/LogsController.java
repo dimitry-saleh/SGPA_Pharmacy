@@ -23,7 +23,7 @@ public class LogsController {
     public void initialize() {
         loggerDAO = new LoggerDAO();
 
-        // Configuration des colonnes
+        // Configuration of columns
         colDate.setCellValueFactory(new PropertyValueFactory<>("formattedDate"));
         colUser.setCellValueFactory(new PropertyValueFactory<>("username"));
         colAction.setCellValueFactory(new PropertyValueFactory<>("action"));

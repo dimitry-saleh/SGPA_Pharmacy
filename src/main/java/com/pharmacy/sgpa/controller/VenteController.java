@@ -190,10 +190,6 @@ public class VenteController {
         navigateTo(event,"/fxml/MainView.fxml");
     }
 
-    // Add import: import com.pharmacy.sgpa.dao.VenteDAO;
-    // Add import: import com.pharmacy.sgpa.model.Vente;
-    // Add import: import java.util.ArrayList;
-
     @FXML
     public void processSale() {
         javafx.stage.Window owner = tablePanier.getScene().getWindow();

@@ -60,7 +60,7 @@ public class MedicamentDAO {
                 m.setStockActuel(rs.getInt("stock_actuel"));
                 m.setSeuilMin(rs.getInt("seuil_min"));
 
-                // --- THE MISSING LINE ---
+
                 // This is critical for the "Edit" form to know which supplier is selected
                 m.setFournisseurId(rs.getInt("fournisseur_id"));
                 // ------------------------
@@ -108,7 +108,7 @@ public class MedicamentDAO {
             stmt.setBoolean(10, m.isNecessiteOrdonnance());
 
             // 2. Set the Supplier ID
-            stmt.setInt(11, m.getFournisseurId()); // <--- NEW PARAMETER
+            stmt.setInt(11, m.getFournisseurId());
 
             // 3. The ID is now at position 12
             stmt.setInt(12, m.getId());
@@ -154,7 +154,6 @@ public class MedicamentDAO {
                 m.setSeuilMin(rs.getInt("seuil_min"));
                 m.setPrixAchat(rs.getDouble("prix_achat"));
                 m.setFournisseurId(rs.getInt("fournisseur_id")); // Store it
-                // ... map other fields if needed ...
                 list.add(m);
             }
         } catch (SQLException e) { e.printStackTrace(); }
