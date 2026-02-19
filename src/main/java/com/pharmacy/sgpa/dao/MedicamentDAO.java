@@ -122,22 +122,28 @@ public class MedicamentDAO {
     }
 
     // 4. DELETE
-    public void deleteMedicament(int id) {
-        String sql = "DELETE FROM medicament WHERE id=?";
+    public boolean deleteMedicament(int id) {
+        String sql = "DELETE FROM medicament WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
-            stmt.executeUpdate();
-            System.out.println("🗑️ Medicament deleted ID: " + id);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0; // Retourne true si succès
+
+        } catch (SQLIntegrityConstraintViolationException e) {
+
+            System.out.println("Impossible de supprimer : Donnée liée.");
+            return false;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
-    // Get drugs belonging to a specific supplier
+
     public List<Medicament> getMedicamentsByFournisseur(int fournisseurId) {
         List<Medicament> list = new ArrayList<>();
-        // Note: We check fournisseur_id = ?
+
         String sql = "SELECT * FROM medicament WHERE fournisseur_id = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();

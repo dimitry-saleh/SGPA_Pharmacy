@@ -12,6 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Window;
 
+import static com.pharmacy.sgpa.util.NavigationUtil.showNotification;
+
 public class FournisseurController {
 
     // --- FXML UI COMPONENTS ---
@@ -110,25 +112,25 @@ public class FournisseurController {
 
         // 1. Check Empty Fields
         if (nom.isEmpty() || contact.isEmpty() || email.isEmpty() || adresse.isEmpty()) {
-            NavigationUtil.showNotification(owner, "Données manquantes", "Tous les champs sont obligatoires.");
+            showNotification(owner, "Données manquantes", "Tous les champs sont obligatoires.");
             return;
         }
 
         // 2. Validate Email
         if (!email.matches(EMAIL_REGEX)) {
-            NavigationUtil.showNotification(owner, "Format Incorrect", "L'adresse email n'est pas valide.");
+            showNotification(owner, "Format Incorrect", "L'adresse email n'est pas valide.");
             return;
         }
 
         // 3. Validate Phone
         if (!contact.matches(PHONE_REGEX)) {
-            NavigationUtil.showNotification(owner, "Format Incorrect", "Le numéro de téléphone est invalide.");
+            showNotification(owner, "Format Incorrect", "Le numéro de téléphone est invalide.");
             return;
         }
 
         // 4. Validate Address
         if (adresse.length() < 5) { // Relaxed constraint slightly
-            NavigationUtil.showNotification(owner, "Adresse trop courte", "Veuillez entrer une adresse complète.");
+            showNotification(owner, "Adresse trop courte", "Veuillez entrer une adresse complète.");
             return;
         }
 
@@ -146,23 +148,45 @@ public class FournisseurController {
 
         refreshData(); // Updates the Master List
 
-        NavigationUtil.showNotification(owner, "Succès", "Fournisseur ajouté avec succès !");
+        showNotification(owner, "Succès", "Fournisseur ajouté avec succès !");
     }
 
     @FXML
     public void deleteFournisseur() {
-        Window owner = tableFournisseurs.getScene().getWindow();
         Fournisseur selected = tableFournisseurs.getSelectionModel().getSelectedItem();
 
-        if (selected == null) {
-            NavigationUtil.showNotification(owner, "Erreur", "Veuillez sélectionner un fournisseur.");
-            return;
-        }
+        if (selected != null) {
 
-        dao.deleteFournisseur(selected.getId());
-        refreshData(); // Updates the Master List
-        NavigationUtil.showNotification(owner, "Suppression", "Fournisseur supprimé.");
+            Window owner = tableFournisseurs.getScene().getWindow();
+
+
+            Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmDialog.initOwner(owner);
+            confirmDialog.setTitle("Confirmation");
+            confirmDialog.setHeaderText(null);
+            confirmDialog.setContentText("Voulez-vous vraiment supprimer " + selected.getNom() + " ?");
+
+            if (confirmDialog.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
+
+                boolean isDeleted = dao.deleteFournisseur(selected.getId());
+
+                if (isDeleted) {
+                    masterList.remove(selected);
+
+                    // NOTIFICATION DE SUCCÈS
+                    showNotification(owner, "Succès", "Le fournisseur a été supprimé.");
+
+                } else {
+
+                    showNotification(owner,
+                            "Action bloquée",
+                            "Impossible de supprimer " + selected.getNom() +
+                                    " car des commandes y sont liées.");
+                }
+            }
+        }
     }
+
 
     @FXML
     public void backToMenu(javafx.event.ActionEvent event) {

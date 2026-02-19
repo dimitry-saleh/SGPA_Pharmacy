@@ -23,6 +23,7 @@ import java.util.Optional;
 import java.io.IOException;
 import com.pharmacy.sgpa.model.Fournisseur;
 import com.pharmacy.sgpa.dao.FournisseurDAO;
+import javafx.stage.Window;
 import javafx.util.StringConverter;
 
 import static com.pharmacy.sgpa.util.NavigationUtil.navigateTo;
@@ -252,21 +253,47 @@ public class MainController {
     }
     @FXML
     public void handleDeleteMedicament() {
-        javafx.stage.Window owner = medicamentTable.getScene().getWindow();
+        // 1. Récupérer le médicament sélectionné
         Medicament selected = medicamentTable.getSelectionModel().getSelectedItem();
-        if (selected == null) {
-            showNotification(owner,"Aucune sélection", "Veuillez sélectionner un médicament à supprimer.");
-            return;
-        }
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setContentText("Voulez-vous vraiment supprimer " + selected.getNomCommercial() + " ?");
+        if (selected != null) {
+            // 2. Récupérer le "owner" (la fenêtre actuelle) via le tableau
+            Window owner = medicamentTable.getScene().getWindow();
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            medicamentDAO.deleteMedicament(selected.getId());
-            loadData(); // Refresh table
+            // 3. Demander confirmation avant la suppression
+            Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmDialog.initOwner(owner); // Attache l'alerte à la fenêtre principale
+            confirmDialog.setTitle("Confirmation de suppression");
+            confirmDialog.setHeaderText(null);
+            confirmDialog.setContentText("Êtes-vous sûr de vouloir supprimer le médicament : " + selected.getNomCommercial() + " ?");
+
+            // Si l'utilisateur valide
+            if (confirmDialog.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
+
+                // 4. Tentative de suppression en base de données
+                boolean isDeleted = medicamentDAO.deleteMedicament(selected.getId());
+
+                if (isDeleted) {
+                    // SUCCÈS : Mise à jour de l'interface
+                    masterData.remove(selected);
+
+                    // Affichage de votre notification de succès
+                    showNotification(owner,
+                            "Succès",
+                            "Le médicament " + selected.getNomCommercial() + " a été supprimé.");
+
+                } else {
+                    // ÉCHEC : Le DAO a renvoyé false (bloqué par la base de données)
+                    showNotification(owner,
+                            "Action bloquée",
+                            "Impossible de supprimer " + selected.getNomCommercial() +
+                                    ".\nIl est lié à des ventes ou des commandes existantes.\nAstuce : Mettez plutôt son stock à 0.");
+                }
+            }
+        } else {
+            // Optionnel : Si l'utilisateur clique sur le bouton sans avoir sélectionné de ligne
+            Window owner = medicamentTable.getScene().getWindow();
+            showNotification(owner, "Avertissement", "Veuillez sélectionner un médicament à supprimer.");
         }
     }
 

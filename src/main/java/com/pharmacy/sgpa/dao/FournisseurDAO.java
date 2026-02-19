@@ -48,15 +48,22 @@ public class FournisseurDAO {
         return list;
     }
 
-    public void deleteFournisseur(int id) {
-        String sql = "DELETE FROM fournisseur WHERE id=?";
+    public boolean deleteFournisseur(int id) {
+        String sql = "DELETE FROM fournisseur WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setInt(1, id);
-            stmt.executeUpdate();
-            System.out.println("🗑 Supplier deleted: ID " + id);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0; // Retourne true si le fournisseur a bien été supprimé
+
+        } catch (java.sql.SQLIntegrityConstraintViolationException e) {
+
+            System.err.println("Impossible de supprimer le fournisseur : des commandes y sont liées.");
+            return false;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
